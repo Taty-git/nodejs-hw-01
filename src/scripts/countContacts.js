@@ -1,3 +1,11 @@
-export const countContacts = async () => {};
+import { PATH_DB } from '../constants/contacts';
+import fs from 'fs/promises';
 
-console.log(await countContacts());
+export const countContacts = async () => {
+    const fileData = await fs.readFile(PATH_DB, 'utf-8');
+    const contacts = JSON.parse(fileData);
+    return contacts.length;
+};
+const total = await countContacts();
+
+console.log(`Всього контактів: ${total}`);
