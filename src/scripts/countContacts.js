@@ -1,11 +1,13 @@
-import { PATH_DB } from '../constants/contacts';
-import fs from 'fs/promises';
+
+import {readContacts} from '../utils/readContacts.js';
 
 export const countContacts = async () => {
-    const fileData = await fs.readFile(PATH_DB, 'utf-8');
-    const contacts = JSON.parse(fileData);
-    return contacts.length;
+     try {
+    const existingContacts = await readContacts();
+    return existingContacts.length;
+  } catch (error) {
+    console.error('Помилка при підрахуванні контактів', error);
+  }
 };
-const total = await countContacts();
 
-console.log(`Всього контактів: ${total}`);
+console.log(await countContacts());

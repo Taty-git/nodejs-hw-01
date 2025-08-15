@@ -2,10 +2,10 @@ import { readContacts } from "../utils/readContacts";
 
 export const getAllContacts = async () => {
     try {
-        const data = await readContacts();
-        return data;
-    } catch (err) {
-        console.error('Помилка читання файлу:', err);
+        const existingContacts = await readContacts();
+        return existingContacts;
+    } catch (error) {
+        console.error('Помилка читання файлу:', error);
         return [];
   }
 };

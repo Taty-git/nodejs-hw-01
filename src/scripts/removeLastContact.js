@@ -3,14 +3,14 @@ import {readContacts} from '../utils/readContacts.js';
 
 export const removeLastContact = async () => {
     try {
-        const data = await readContacts();
-        if (!data.length) return;
-        data.pop();
+        const existingContacts = await readContacts();
+        if (!existingContacts.length) return;
+        existingContacts.pop();
 
-        await writeContacts(data);
-        console.log(`Видалено останній контакт. Залишилось: ${data.length}`);
+        await writeContacts(existingContacts);
+        console.log(`Видалено останній контакт. Залишилось: ${existingContacts.length}`);
     } catch (error){
-        console.error('Сталася помилка під час усунення контакту:', error);
+        console.error('Сталася помилка під час видалення контакту:', error);
     }
  };
 
