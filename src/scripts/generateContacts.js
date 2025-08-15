@@ -1,4 +1,4 @@
-import { createFakeContact } from '../utils/createFakeContact';
+import { createFakeContact } from '../utils/createFakeContact.js';
 import { readContacts } from '../utils/readContacts.js';
 
 export const generateContacts = async (number) => {
