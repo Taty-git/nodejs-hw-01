@@ -1,5 +1,6 @@
 import { createFakeContact } from '../utils/createFakeContact.js';
 import { readContacts } from '../utils/readContacts.js';
+import { writeContacts } from '../utils/writeContacts.js';
 
 export const generateContacts = async (number) => {
     try {
@@ -10,7 +11,7 @@ export const generateContacts = async (number) => {
         const existingData = await readContacts();
              
         const updatedContacts = [...existingData, ...newContacts];
-        await readContacts(updatedContacts);
+        await writeContacts(updatedContacts);
 
         console.log(`Успішно додано ${number} нових контактів.`);
     } catch (error) {
